@@ -64,6 +64,16 @@ window.onload = function() {
                 }
             };
             
+            // Add error handling
+            image.onerror = function() {
+                console.error('Failed to load image:', imagefiles[i]);
+                loadcount++;
+                if (loadcount == loadtotal) {
+                    // Done loading (even with errors)
+                    preloaded = true;
+                }
+            };
+            
             // Set the source url of the image
             image.src = imagefiles[i];
             
